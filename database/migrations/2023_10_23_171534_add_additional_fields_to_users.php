@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('paternal_last_name', 30);
-            $table->string('maternal_last_name', 30);
-            $table->string('pass');
-            $table->integer('state');
-            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('staff_id')->constrained('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('paternal_last_name', 30)->nullable();
+            $table->string('maternal_last_name', 30)->nullable();
+            $table->integer('state')->nullable();
+            $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('staff_id')->nullable()->constrained('staff')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }
