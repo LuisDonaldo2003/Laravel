@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Registration;
+use App\Models\Period;
+use App\Models\Activity;
+use App\Models\Instructor;
+use App\Models\Group;
+use App\Models\Area;
+use App\Models\Career;
 use Illuminate\Http\Request;
 
 class RegistrationController extends Controller
@@ -20,7 +26,14 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        //
+        $periods = Period::all();
+        $activities = Activity::all();
+        $instructors = Instructor::all();
+        $groups = Group::all();
+        $areas = Area::all();
+        $careers = Career::all();
+
+        return view('registration.create', compact('periods', 'activities', 'instructors', 'groups', 'areas', 'careers'));
     }
 
     /**
@@ -28,7 +41,20 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'period_id' => 'required',
+            'activity_id' => 'required',
+            'instructor_id' => 'required',
+            'group_id' => 'required',
+            'area_id' => 'required',
+            'student_id' => 'required',
+            'grade' => 'required',
+            'career_id' => 'required',
+        ]);
+
+        Registration::create($data);
+
+        return redirect()->route('registration.create')->with('success', 'Inscripción exitosa');
     }
 
     /**
