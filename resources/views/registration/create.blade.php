@@ -12,8 +12,8 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="bg-white rounded p-4 border border-2 border-dark">
-                <h1 class="text-center h3">Registration Form</h1>
-                <p class="text-center mb-4">Provide the necessary data for your registration</p>
+                <h1 class="text-center h3">Formulario de Inscripción</h1>
+                <p class="text-center mb-4">Rellena el formulario con los datos que se te piden</p>
 
                 <form action="{{ route('registrations.store') }}" method="POST" novalidate>
                     @csrf
@@ -23,7 +23,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar"></i></span>
                             <select class="form-select form-select-lg form-control" name="period_id">
-                                <option selected>Select the period</option>
+                                <option selected>Selecciona el periodo</option>
                                 @foreach ($periods as $period)
                                     <option value="{{ $period->id }}">{{ $period->period_name }}</option>
                                 @endforeach
@@ -41,7 +41,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon2"><i class="bi bi-activity"></i></span>
                             <select class="form-select form-select-lg form-control" name="activity_id">
-                                <option selected>Select the activity</option>
+                                <option selected>Selecciona la actividad</option>
                                 @foreach ($activities as $activity)
                                     <option value="{{ $activity->id }}">{{ $activity->activity_name }}</option>
                                 @endforeach
@@ -59,7 +59,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon3"><i class="bi bi-people"></i></span>
                             <select class="form-select form-select-lg form-control" name="instructor_id">
-                                <option selected>Select the instructor</option>
+                                <option selected>Selecciona el instructor</option>
                                 @foreach ($instructors as $instructor)
                                     <option value="{{ $instructor->id }}">{{ $instructor->instructor_name }}</option>
                                 @endforeach
@@ -77,7 +77,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon4"><i class="bi bi-person-plus"></i></span>
                             <select class="form-select form-select-lg form-control" name="group_id">
-                                <option selected>Select the group</option>
+                                <option selected>Seleciona el grupo</option>
                                 @foreach ($groups as $group)
                                     <option value="{{ $group->id }}">{{ $group->group_name }}</option>
                                 @endforeach
@@ -95,7 +95,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon5"><i class="bi bi-person-workspace"></i></span>
                             <select class="form-select form-select-lg form-control" name="area_id">
-                                <option selected>Select the area</option>
+                                <option selected>Selecciona el area</option>
                                 @foreach ($areas as $area)
                                     <option value="{{ $area->id }}">{{ $area->area_name }}</option>
                                 @endforeach
@@ -153,7 +153,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon8"><i class="bi bi-book"></i></span>
                             <select class="form-select form-select-lg form-control" name="career_id">
-                                <option selected>Select your career</option>
+                                <option selected>Selecciona la carrera</option>
                                 @foreach ($careers as $career)
                                     <option value="{{ $career->id }}">{{ $career->career_name }}</option>
                                 @endforeach
