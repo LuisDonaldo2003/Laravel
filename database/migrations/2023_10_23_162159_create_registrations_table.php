@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('registrations', function (Blueprint $table) {
-            $table->foreignId('period_id')->constrained('periods')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('activity_id')->constrained('activities')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('instructor_id')->constrained('instructors')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('group_id')->constrained('groups')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('area_id')->constrained('areas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('student_id')->constrained('students')->onDelete('cascade')->onUpdate('cascade');
-            $table->tinyInteger('grade');
-            $table->foreignId('career_id')->constrained('careers')->onDelete('cascade')->onUpdate('cascade');
+            $table->id();
+            $table->integer('grade');
+            $table->foreignId('period_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('activity_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('instructor_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('group_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('area_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('career_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

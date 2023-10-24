@@ -13,26 +13,23 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 30);
-            $table->string('paternal_last_name', 30);
-            $table->string('maternal_last_name', 30);
-            $table->string('email', 50);
-            $table->string('phone', 15);
-            $table->date('birthdate');
-            $table->string('street');
-            $table->string('exterior_number', 10);
-            $table->string('interior_number', 10);
-            $table->string('neighborhood', 30);
-            $table->string('password');
-            $table->char('status', 1);
-            $table->integer('semester');
+            $table->string("name", 200);
+            $table->string("lastname", 200);
+            $table->string("email", 200);
+            $table->string("telephone", 20);
+            $table->date("birthdate");
+            $table->string("gender", 15)->nullable();
+            $table->string("street", 50)->nullable();
+            $table->integer("exterior_number");
+            $table->integer("interior_number");
+            $table->string("suburb")->nullable();
+            $table->char("status", 1)->nullable();
+            $table->integer("semester")->nullable();
             $table->timestamps();
-
-            $table->foreignId('town_id')->constrained('towns')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('career_id')->constrained('careers')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('gender_id')->constrained('genders')->onDelete('cascade')->onUpdate('cascade');
-
+            $table->foreignId('town_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('role_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('career_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('gender_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

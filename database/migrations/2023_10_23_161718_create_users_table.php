@@ -14,15 +14,14 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('lastname');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->string('paternal_last_name', 30);
-            $table->string('maternal_last_name', 30);
-            $table->integer('state');
-            $table->foreignId('role_id')->constrained('roles')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('staff_id')->constrained('staff')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('status',['active','inactive'])->default('inactive');
+            $table->foreignId('roles_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('staff_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

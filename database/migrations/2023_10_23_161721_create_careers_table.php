@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
-            $table->string('career', 70);
-            $table->char('curriculum', 1);
-            $table->string('educational_level', 40);
-            $table->string('official_code', 15);
-            $table->string('career_name', 70);
-            $table->string('abbreviate_name');
-            $table->smallInteger('maximum_load');
-            $table->smallInteger('total_credits');
-            $table->string('level', 25);
-            $table->string('modality', 25);
+            $table->string('name');
+            $table->string('reticula');
+            $table->string('level_scholar');
+            $table->string('code');
+            $table->string('name_career');
+            $table->string('name_small');
+            $table->integer('max');
+            $table->integer('credits');
+            $table->string('level');
+            $table->string('type');
             $table->timestamps();
         });
     }

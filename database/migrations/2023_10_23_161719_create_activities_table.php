@@ -13,18 +13,17 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
-            $table->text('general_objective');
+            $table->String('name');
+            $table->text('objective');
             $table->text('competence');
             $table->text('syllabus');
-            $table->char('authorized', 1);
+            $table->enum('authorized',['yes','not'])->default('not');
+            $table->integer('activity');
             $table->integer('credits');
+            $table->foreignId('period_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('staff_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('period_id')->constrained('periods')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('staff_id')->constrained('staff')->onDelete('cascade')->onUpdate('cascade');
-
         });
     }
 

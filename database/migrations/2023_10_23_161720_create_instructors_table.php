@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('staff', function (Blueprint $table) {
+        Schema::create('instructors', function (Blueprint $table) {
             $table->id();
-            $table->string('area');
-            $table->text('description');
-            $table->unsignedBigInteger('area_depends_on');
-            $table->unsignedBigInteger('level');
-            $table->unsignedBigInteger('area_type');
-            $table->string('head');
+            $table->string('name', 200);
+            $table->string('last_name', 200);
+            $table->string('RFC', 200);
+            $table->string('training', 200);
             $table->timestamps();
+            $table->foreignId('gender_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('staff');
+        Schema::dropIfExists('instructors');
     }
 };
